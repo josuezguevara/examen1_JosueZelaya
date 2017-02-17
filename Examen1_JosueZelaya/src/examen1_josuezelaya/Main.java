@@ -6,7 +6,10 @@
 package examen1_josuezelaya;
 
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,7 +35,7 @@ public class Main extends javax.swing.JFrame {
 
         tab_principal = new javax.swing.JTabbedPane();
         panel_operaciones = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        pane_operaciones = new javax.swing.JTabbedPane();
         panel_agregar = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         tab_pane_tipo = new javax.swing.JTabbedPane();
@@ -60,7 +63,16 @@ public class Main extends javax.swing.JFrame {
         boton_guardar = new javax.swing.JToggleButton();
         panel_modificar = new javax.swing.JPanel();
         panel_eliminar = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        cb_persona1 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla2 = new javax.swing.JTable();
+        eliminar_boton = new javax.swing.JToggleButton();
         panel_reporte = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        cb_persona = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla1 = new javax.swing.JTable();
         panel2 = new javax.swing.JPanel();
         panel3 = new javax.swing.JPanel();
 
@@ -69,6 +81,12 @@ public class Main extends javax.swing.JFrame {
         tab_principal.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tab_principalStateChanged(evt);
+            }
+        });
+
+        pane_operaciones.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pane_operacionesStateChanged(evt);
             }
         });
 
@@ -268,7 +286,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Agregar", panel_agregar);
+        pane_operaciones.addTab("Agregar", panel_agregar);
 
         javax.swing.GroupLayout panel_modificarLayout = new javax.swing.GroupLayout(panel_modificar);
         panel_modificar.setLayout(panel_modificarLayout);
@@ -281,33 +299,141 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 390, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Modificar", panel_modificar);
+        pane_operaciones.addTab("Modificar", panel_modificar);
+
+        jLabel11.setText("Personas");
+
+        cb_persona1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_persona1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_persona1ItemStateChanged(evt);
+            }
+        });
+        cb_persona1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_persona1ActionPerformed(evt);
+            }
+        });
+
+        tabla2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "ID", "Departamento", "Dinero"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabla2);
+
+        eliminar_boton.setText("Eliminar");
+        eliminar_boton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminar_botonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_eliminarLayout = new javax.swing.GroupLayout(panel_eliminar);
         panel_eliminar.setLayout(panel_eliminarLayout);
         panel_eliminarLayout.setHorizontalGroup(
             panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 874, Short.MAX_VALUE)
+            .addGroup(panel_eliminarLayout.createSequentialGroup()
+                .addGroup(panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_eliminarLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel_eliminarLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(26, 26, 26)
+                                .addComponent(cb_persona1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panel_eliminarLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(eliminar_boton)))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         panel_eliminarLayout.setVerticalGroup(
             panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(panel_eliminarLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(cb_persona1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(eliminar_boton)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Eliminar", panel_eliminar);
+        pane_operaciones.addTab("Eliminar", panel_eliminar);
+
+        jLabel10.setText("Personas");
+
+        cb_persona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_persona.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_personaItemStateChanged(evt);
+            }
+        });
+        cb_persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_personaActionPerformed(evt);
+            }
+        });
+
+        tabla1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Edad", "ID Boleto", "Departamento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Long.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabla1);
 
         javax.swing.GroupLayout panel_reporteLayout = new javax.swing.GroupLayout(panel_reporte);
         panel_reporte.setLayout(panel_reporteLayout);
         panel_reporteLayout.setHorizontalGroup(
             panel_reporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 874, Short.MAX_VALUE)
+            .addGroup(panel_reporteLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panel_reporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_reporteLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(51, 51, 51)
+                        .addComponent(cb_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         panel_reporteLayout.setVerticalGroup(
             panel_reporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(panel_reporteLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(panel_reporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(cb_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Reporte", panel_reporte);
+        pane_operaciones.addTab("Reporte", panel_reporte);
 
         javax.swing.GroupLayout panel_operacionesLayout = new javax.swing.GroupLayout(panel_operaciones);
         panel_operaciones.setLayout(panel_operacionesLayout);
@@ -315,14 +441,14 @@ public class Main extends javax.swing.JFrame {
             panel_operacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_operacionesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2)
+                .addComponent(pane_operaciones)
                 .addContainerGap())
         );
         panel_operacionesLayout.setVerticalGroup(
             panel_operacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_operacionesLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pane_operaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -376,6 +502,18 @@ public class Main extends javax.swing.JFrame {
 
     private void tab_principalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principalStateChanged
         // TODO add your handling code here:
+        if (tab_principal.getSelectedIndex()==0){
+            System.out.println("Entro 1");
+            String contrasena2 =JOptionPane.showInputDialog(null, "Ingrese su contraseña");
+            if (contrasena2.equals(contrasena)){
+                System.out.println("Excelente");
+                JOptionPane.showMessageDialog(null, "Bienvenido Ingeniero");
+                pane_operaciones.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "La contraseña es incorrecta no es el Ingeniero");
+                pane_operaciones.setVisible(false);
+            }
+        }
 
     }//GEN-LAST:event_tab_principalStateChanged
 
@@ -401,7 +539,7 @@ public class Main extends javax.swing.JFrame {
             long id_loto = Long.parseLong(tf_boleto_loto.getText());
             String departamento = cb_departamento.getSelectedItem().toString();
             int dinero = Integer.parseInt(tf_dinero.getText());
-            if (tab_pane_tipo.getSelectedIndex() == 0) {//empleo
+            if (tab_pane_tipo.getSelectedIndex() == 0) {//empleado
                 String empleo = tf_empleo.getText();
                 lista.add(new Empleado(empleo, nombre, edad, id, id_loto, departamento, dinero));
             } else if (tab_pane_tipo.getSelectedIndex() == 1) {//estudiante
@@ -412,7 +550,12 @@ public class Main extends javax.swing.JFrame {
                lista.add(new Politico(partido, nombre, edad, id, id_loto, departamento, dinero));
             }
             JOptionPane.showMessageDialog(this, "Fue agregado exitosamente");
-            //resetear todo
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardaron los datos");
+        }
+         //resetear todo
             tf_nombre.setText("");
             tf_edad.setText("");
             tf_id.setText("");
@@ -422,12 +565,88 @@ public class Main extends javax.swing.JFrame {
             tf_empleo.setText("");
             tf_carrera.setText("");
             cb_partidos.setSelectedIndex(0);
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardaron los datos");
-        }
-
     }//GEN-LAST:event_boton_guardarMouseClicked
+
+    private void pane_operacionesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pane_operacionesStateChanged
+        // TODO add your handling code here:
+        if (pane_operaciones.getSelectedIndex()==3){
+             DefaultComboBoxModel modelo=
+                    new DefaultComboBoxModel();
+            for (Persona temp : lista) {
+                modelo.addElement(temp);
+            }
+            cb_persona.setModel(modelo);
+        }
+        if (pane_operaciones.getSelectedIndex()==2){
+            DefaultComboBoxModel modelo=
+                    new DefaultComboBoxModel();
+            for (Persona te : lista) {
+                modelo.addElement(te);
+            }
+            cb_persona1.setModel(modelo);
+        }
+    }//GEN-LAST:event_pane_operacionesStateChanged
+
+    private void cb_personaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_personaItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange()==2){//van a ver 2 eventos
+            Persona s=
+                    (Persona) cb_persona.getSelectedItem();
+            
+                    Object [] newrow = {
+                        s.getNombre(),
+                        s.getEdad(),
+                        s.getId_boleteria(),
+                        s.getDepartamento()
+                       
+                    };
+                    DefaultTableModel modelo=
+                            (DefaultTableModel) tabla1.getModel();
+                    modelo.addRow(newrow);
+                    tabla1.setModel(modelo);
+        }//fin del if
+       
+    }//GEN-LAST:event_cb_personaItemStateChanged
+
+    private void cb_personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_personaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_personaActionPerformed
+
+    private void cb_persona1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_persona1ItemStateChanged
+        // TODO add your handling code here:
+         if (evt.getStateChange()==2){//van a ver 2 eventos
+            Persona s=
+                    (Persona) cb_persona1.getSelectedItem();
+            
+                    Object [] newrow = {
+                        s.getNombre(),
+                        s.getId(),
+                        s.getDepartamento(),
+                        s.getDinero()
+                       
+                    };
+                    DefaultTableModel modelo=
+                            (DefaultTableModel) tabla2.getModel();
+                    modelo.addRow(newrow);
+                    tabla2.setModel(modelo);
+        }//fin del if
+        
+        
+    }//GEN-LAST:event_cb_persona1ItemStateChanged
+
+    private void cb_persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_persona1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_persona1ActionPerformed
+
+    private void eliminar_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_botonMouseClicked
+        // TODO add your handling code here:
+         if (tabla2.getSelectedRow()>=0){
+            DefaultTableModel modelo=
+                    (DefaultTableModel) tabla2.getModel();
+            modelo.removeRow(tabla2.getSelectedRow());
+            tabla2.setModel(modelo);
+         }
+    }//GEN-LAST:event_eliminar_botonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -456,7 +675,7 @@ public class Main extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        contrasena = JOptionPane.showInputDialog(null, "Ingrese contraseña");
+        contrasena = JOptionPane.showInputDialog(null, "Ingrese su nueva contraseña");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -471,7 +690,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JToggleButton boton_guardar;
     private javax.swing.JComboBox<String> cb_departamento;
     private javax.swing.JComboBox<String> cb_partidos;
+    private javax.swing.JComboBox<String> cb_persona;
+    private javax.swing.JComboBox<String> cb_persona1;
+    private javax.swing.JToggleButton eliminar_boton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -480,8 +704,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTabbedPane pane_operaciones;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel panel3;
     private javax.swing.JPanel panel_agregar;
@@ -494,6 +720,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel panel_reporte;
     private javax.swing.JTabbedPane tab_pane_tipo;
     private javax.swing.JTabbedPane tab_principal;
+    private javax.swing.JTable tabla1;
+    private javax.swing.JTable tabla2;
     private javax.swing.JTextField tf_boleto_loto;
     private javax.swing.JTextField tf_carrera;
     private javax.swing.JTextField tf_dinero;
