@@ -397,18 +397,34 @@ public class Main extends javax.swing.JFrame {
         try {
             String nombre = tf_nombre.getText();
             int edad = Integer.parseInt(tf_edad.getText());
-            long id = Integer.parseInt(tf_id.getText());
-            long id_loto = Integer.parseInt(tf_boleto_loto.getText());
+            long id = Long.parseLong(tf_id.getText());
+            long id_loto = Long.parseLong(tf_boleto_loto.getText());
             String departamento = cb_departamento.getSelectedItem().toString();
             int dinero = Integer.parseInt(tf_dinero.getText());
-            if (tab_pane_tipo.getSelectedIndex() == 0) {
+            if (tab_pane_tipo.getSelectedIndex() == 0) {//empleo
                 String empleo = tf_empleo.getText();
                 lista.add(new Empleado(empleo, nombre, edad, id, id_loto, departamento, dinero));
-            } else if (tab_pane_tipo.getSelectedIndex() == 1) {
-                
+            } else if (tab_pane_tipo.getSelectedIndex() == 1) {//estudiante
+                String carrera=tf_carrera.getText();
+                lista.add(new Estudiante(carrera, nombre, edad, id, id_loto, departamento, dinero));
+            } else if (tab_pane_tipo.getSelectedIndex()==2){// politico
+               String partido=cb_partidos.getSelectedItem().toString();
+               lista.add(new Politico(partido, nombre, edad, id, id_loto, departamento, dinero));
             }
-
+            JOptionPane.showMessageDialog(this, "Fue agregado exitosamente");
+            //resetear todo
+            tf_nombre.setText("");
+            tf_edad.setText("");
+            tf_id.setText("");
+            tf_boleto_loto.setText("");
+            cb_departamento.setSelectedIndex(0);
+            tf_dinero.setText("");
+            tf_empleo.setText("");
+            tf_carrera.setText("");
+            cb_partidos.setSelectedIndex(0);
         } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardaron los datos");
         }
 
     }//GEN-LAST:event_boton_guardarMouseClicked
